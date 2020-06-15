@@ -88,9 +88,16 @@ class Car {
   drive(distance) {
     this.tank -= distance/this.milesPerGallon;
     this.odometer = distance;
+    if (this.tank <= 0) {
+      const extra = this.tank;
+      this.tank -= extra;
+      this.odometer += extra * this.milesPerGallon;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    } else {
+      return;
+    }
   }
 }
-
 /*
   TASK 3
     - Write a Lambdasian class.
@@ -104,7 +111,14 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
-
+  constructor(name, age, location) {
+    this.name = name;
+    this.age = age;
+    this.location = location;
+  }
+  speaking() {
+    return `Hello my name is ${this.name}. I am from ${this.location}.`
+  }
 }
 
 /*
